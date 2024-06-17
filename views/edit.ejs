@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/main.css" rel="stylesheet" />
+  </head>
+  <body class="grey-bg">
+    <%- include('nav.ejs') %>
+    <div class="white-bg">
+      <form class="form-box" action="/edit/<%= data._id%>" method="POST">
+        <h4>글 수정하기</h4>
+        <input name="title" value="<%= data.title%>" />
+        <input name="content" value="<%= data.content%>" />
+        <button type="submit">수정</button>
+      </form>
+    </div>
+  </body>
+</html>

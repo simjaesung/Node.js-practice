@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/main.css" rel="stylesheet" />
+  </head>
+  <body class="grey-bg">
+    <%- include('nav.ejs') %>
+    <div class="detail-bg">
+      <h4><%= data.title%></h4>
+      <p><%= data.content%></p>
+      <button><a href="/edit/<%=data._id%>">수정 ✏️</a></button>
+      <button class="delete" data-id="<%= data._id%>">삭제 🗑️</button>
+    </div>
+  </body>
+</html>
+<script>
+  document
+    .querySelectorAll('.delete')[0]
+    .addEventListener('click', function (e) {
+      fetch('/delete/' + e.target.dataset.id, { method: 'DELETE' }).then(r => {
+        console.log('삭제완료');
+        location.href = '/list';
+      });
+      //   fetch('/delete', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({ _id: e.target.dataset.id }),
+      //   });
+    });
+</script>
